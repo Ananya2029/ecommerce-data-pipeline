@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Run the pipeline on the sample data (fails on any data-quality error)
+        env:
+          PIPELINE_DATA_DIR: data/sample
+          PIPELINE_WAREHOUSE: /tmp/ci.duckdb
+          PIPELINE_OUTPUT_DIR: /tmp/ci-out
+        run: python -m pipeline.run
+      - name: Tests
+        run: python -m pytest -q

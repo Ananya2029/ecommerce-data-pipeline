@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+# Full Kaggle data (~120 MB) — download it, see README. data/sample/ IS committed.
+data/raw/
+warehouse/
+exports/

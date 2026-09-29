@@ -1,0 +1,198 @@
+[
+  {
+    "check": "silver.orders: order_id is unique",
+    "layer": "silver",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "silver.order_items: order_id, order_item_id is unique",
+    "layer": "silver",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "silver.reviews: order_id is unique",
+    "layer": "silver",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "silver.products: product_id is unique",
+    "layer": "silver",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "silver.orders.purchased_at is not null",
+    "layer": "silver",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "silver.products.category is not null",
+    "layer": "silver",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "order_status has an accepted value",
+    "layer": "silver",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "item price is positive",
+    "layer": "silver",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "review score is between 1 and 5",
+    "layer": "silver",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "delivery is not before purchase",
+    "layer": "silver",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "delivered orders have a delivery date",
+    "layer": "silver",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "geolocation points are inside Brazil",
+    "layer": "silver",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "customer zip has a known location",
+    "layer": "silver",
+    "severity": "warn",
+    "failing_rows": 158,
+    "passed": false
+  },
+  {
+    "check": "gold.dim_customer: customer_key is unique",
+    "layer": "gold",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "gold.dim_customer: customer_unique_id is unique",
+    "layer": "gold",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "gold.dim_product: product_key is unique",
+    "layer": "gold",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "gold.dim_seller: seller_key is unique",
+    "layer": "gold",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "gold.dim_date: date_key is unique",
+    "layer": "gold",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "gold.fact_sales: order_id, order_item_id is unique",
+    "layer": "gold",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "gold.fact_orders: order_id is unique",
+    "layer": "gold",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "gold.fact_sales.customer_key exists in gold.dim_customer",
+    "layer": "gold",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "gold.fact_sales.seller_key exists in gold.dim_seller",
+    "layer": "gold",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "gold.fact_sales.product_key exists in gold.dim_product",
+    "layer": "gold",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "fact_sales.purchase_date_key exists in gold.dim_date",
+    "layer": "gold",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "every clean order reaches fact_orders",
+    "layer": "reconciliation",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "item revenue reconciles silver -> gold",
+    "layer": "reconciliation",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "bronze orders = silver orders + quarantined",
+    "layer": "reconciliation",
+    "severity": "error",
+    "failing_rows": 0,
+    "passed": true
+  },
+  {
+    "check": "payment total matches items + freight (within 1 BRL)",
+    "layer": "reconciliation",
+    "severity": "warn",
+    "failing_rows": 249,
+    "passed": false
+  }
+]
